@@ -1,17 +1,15 @@
 DD Kullanımı
 ============
 
-# Dvd veya CD 'den Iso dosyası oluşturma
+# DD klonunu mount etme
 
-dd if=/dev/dvd of=dvd.iso
+fdisk -u -l sda.img
 
-# Iso dosyasını cd veya dvd 'ye yazdırma
+Hangi partitionu mount etmek istiyorsak onun sektor start degerini 512 ile carpariz 
 
-dd if=dvd.iso of=/dev/cdrom obs=32k seek=0
+512 x 6096 = 3121152
 
-# Badblock olan dosyayı kurtarma
-
-dd if=test.avi of=test_yeni.avi conv=noerror
+mount -o loop,offset=3121152 -t auto /root/sda.img /mnt/sda
 
 # Disk klonlama
 
@@ -25,17 +23,22 @@ dd if=sda.img of=/dev/sdb
 
 dd if=/dev/sda | ssh root@ip "(cat > sda.img)"
 
-# DD klonunu mount etme
 
-fdisk -u -l sda.img
+# Dvd veya CD 'den Iso dosyası oluşturma
 
-Hangi partitionu mount etmek istiyorsak onun sektor start degerini 512 ile carpariz 
+dd if=/dev/dvd of=dvd.iso
 
-512 x 6096 = 3121152
+# Iso dosyasını cd veya dvd 'ye yazdırma
 
-mount -o loop,offset=3121152 -t auto /root/sda.img /mnt/sda
+dd if=dvd.iso of=/dev/cdrom obs=32k seek=0
 
-#
+# Badblock olan dosyayı kurtarma
+
+dd if=test.avi of=test_yeni.avi conv=noerror
+
+
+
+
 
 
 
