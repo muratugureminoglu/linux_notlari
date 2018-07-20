@@ -17,7 +17,7 @@ dd if=test.avi of=test_yeni.avi conv=noerror
 
 dd if=/dev/sda of=sda.img
 
-# Klonlanu alınmış diski başka diske açma
+# Klonu alınmış diski başka diske açma
 
 dd if=sda.img of=/dev/sdb
 
