@@ -35,6 +35,8 @@ Hangi partitionu mount etmek istiyorsak onun sektor start degerini 512 ile carpa
 
 mount -o loop,offset=3121152 -t auto /root/sda.img /mnt/sda
 
+#
+
 
 
 
